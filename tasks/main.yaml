@@ -1,0 +1,29 @@
+---
+- name: Install nginx related packages
+  yum:
+    name: "{{ item }}"
+  with_items: "{{ packages_to_install }}"
+
+- name: Enable selinux booleans
+  seboolean:
+    name: "{{ item }}"
+    state: yes
+    persistent: yes
+  with_items: "{{ enabled_booleans }}"
+
+- name: Enable required services
+  service:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  with_items: "{{ enabled_services }}"
+
+- name: Open http and https ports in the firewall
+  firewalld:
+    service: "{{ item }}"
+    permanent: true
+    state: enabled
+  with_items:
+    - https
+    - http
+  notify: reload firewalld
