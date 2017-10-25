@@ -1,5 +1,0 @@
-packages_to_install:
-  - nginx
-
-enabled_services:
-  - nginx
