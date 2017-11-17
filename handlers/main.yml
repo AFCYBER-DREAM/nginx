@@ -2,5 +2,5 @@
 - name: restart nginx
   systemd: name=nginx state=restarted
 
-- name: reload firewalld
-  systemd: name=firewalld state=reloaded
+- name: restart firewalld
+  systemd: name=firewalld state=restart

@@ -22,8 +22,9 @@
   firewalld:
     service: "{{ item }}"
     permanent: true
+    immediate: true
     state: enabled
   with_items:
     - https
     - http
-  notify: reload firewalld
+  notify: restart firewalld
