@@ -3,4 +3,4 @@
   systemd: name=nginx state=restarted
 
 - name: restart firewalld
-  systemd: name=firewalld state=restart
+  systemd: name=firewalld state=restarted
